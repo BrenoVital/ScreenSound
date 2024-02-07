@@ -1,5 +1,16 @@
 ﻿using ScreenSound.Menus;
 using ScreenSound.Modelos;
+using OpenAI_API;
+
+var client = new OpenAIAPI("aqui entra a Key");
+
+
+var chat = client.Chat.CreateConversation();
+
+chat.AppendSystemMessage("Resuma o c# de maneira informal");
+
+string resposta = chat.GetResponseFromChatbotAsync().GetAwaiter().GetResult();
+Console.WriteLine(resposta);
 
 Dictionary<string, Banda> bandasRegistradas = new();
 
@@ -51,7 +62,7 @@ void ExibirOpcoesDoMenu()
     else
     {
         Console.WriteLine("Opção inválida");
-    }   
+    }
 }
 
 ExibirOpcoesDoMenu();
